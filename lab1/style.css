@@ -1,0 +1,152 @@
+/* Универсальный селектор */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Общие стили для текста */
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+/* Шапка */
+header {
+    background-color: #fff;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ff6b35;
+}
+
+nav {
+    padding: 10px 0;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin-left: 20px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ff6b35;
+}
+
+/* Основной контент */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff6b35;
+    margin-bottom: 20px;
+}
+
+/* Изображение */
+img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Список преимуществ */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    font-weight: 400;
+}
+
+ul li::before {
+    content: "✓";
+    color: #ff6b35;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+}
+
+/* Таблица */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #ff6b35;
+    color: #fff;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Футер */
+footer {
+    background-color: black;
+    color: white;
+    padding: 30px 40px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+footer a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #ff6b35;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
