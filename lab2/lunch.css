@@ -1,0 +1,104 @@
+/* Сетка блюд (section > div) */
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* Карточка блюда (section > div > div) */
+.dish-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    border-radius: 35px;
+    cursor: pointer;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    background-color: white;
+    transition: border 0.3s, background-color 0.3s;
+    border: 2px solid transparent;
+}
+
+/* Hover на карточку */
+.dish-card:hover {
+    border: 2px solid tomato;
+}
+
+/* Hover на кнопку внутри карточки (контекстный селектор) */
+.dish-card:hover button {
+    background-color: tomato;
+    color: white;
+}
+
+/* Изображение */
+.dish-card img {
+    width: 100%;
+    border-radius: 35px;
+    margin-bottom: 15px;
+}
+
+/* Цена */
+.dish-card .price {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Название */
+.dish-card .name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    flex-grow: 1; /* Растягивает название, чтобы кнопка и вес были на одном уровне */
+}
+
+/* Вес/объём */
+.dish-card .weight {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 15px;
+}
+
+/* Кнопка */
+.dish-card button {
+    background-color: #f1eee9;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: auto; /* Прижимает кнопку к низу */
+}
+
+/* Адаптивность для страницы «Собрать ланч» */
+@media (max-width: 800px) {
+    .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    nav {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        text-align: center;
+    }
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav a {
+        font-size: 20px;
+    }
+    section h2 {
+        text-align: center;
+    }
+    .dishes-grid {
+        grid-template-columns: 1fr;
+    }
+}
