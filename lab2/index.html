@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="lunch.css">
+    <link rel="stylesheet" href="form.css">
 </head>
 <body>
 
@@ -105,6 +106,90 @@
             </ul>
         </section>
     </main>
+
+    <section class="order-section">
+        <h2>Оформить заказ</h2>
+        <form action="https://httpbin.org/post" method="POST">
+
+            <div class="form-columns">
+
+                <!-- Блок заказа -->
+                <div class="order-block">
+                    <h3>Ваш заказ</h3>
+
+                    <label for="soup">Суп</label>
+                    <select id="soup" name="soup" required>
+                        <option value="">Выберите суп</option>
+                        <option value="tomato-soup">Томатный суп</option>
+                        <option value="mushroom-soup">Грибной крем-суп</option>
+                        <option value="chicken-soup">Суп с курицей</option>
+                    </select>
+
+                    <label for="main">Главное блюдо</label>
+                    <select id="main" name="main" required>
+                        <option value="">Выберите главное блюдо</option>
+                        <option value="potato-cutlets">Картофельные котлеты</option>
+                        <option value="potato-mushrooms">Картофель с грибами</option>
+                        <option value="lasagna">Лазанья</option>
+                    </select>
+
+                    <label for="drink">Напиток</label>
+                    <select id="drink" name="drink" required>
+                        <option value="">Выберите напиток</option>
+                        <option value="apple-juice">Яблочный сок</option>
+                        <option value="carrot-juice">Морковный сок</option>
+                        <option value="orange-juice">Апельсиновый сок</option>
+                    </select>
+
+                    <label for="comment">Комментарий</label>
+                    <textarea id="comment" name="comment" rows="4"></textarea>
+                </div>
+
+                <!-- Блок данных клиента -->
+                <div class="client-block">
+                    <h3>Данные клиента</h3>
+
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="subscribe" name="subscribe" checked>
+                        <label for="subscribe">Подписаться на рассылку</label>
+                    </div>
+
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="address">Адрес</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <fieldset>
+                        <legend>Время доставки</legend>
+                        <div class="radio-row">
+                            <input type="radio" id="asap" name="delivery" value="asap" required>
+                            <label for="asap">Как можно скорее</label>
+                        </div>
+                        <div class="radio-row">
+                            <input type="radio" id="exact" name="delivery" value="exact">
+                            <label for="exact">Точное время</label>
+                        </div>
+                    </fieldset>
+
+                    <label for="time">Укажите время</label>
+                    <input type="time" id="time" name="time" min="07:00" max="23:00" step="300">
+
+                    <div class="buttons-row">
+                        <button type="reset">Сбросить</button>
+                        <button type="submit">Отправить</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </section>
 
     <footer id="contacts">
         <p>Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
