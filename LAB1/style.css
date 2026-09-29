@@ -22,7 +22,7 @@ header {
     background-color: #fff;
     padding: 20px 40px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,11 +36,18 @@ h1 {
     color: #ff6b35;
 }
 
-nav {
+/* Меню */
+nav ul {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
-    padding: 10px 0;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    list-style-type: none;
 }
 
 nav a {
@@ -73,7 +80,7 @@ section {
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 h2 {
@@ -84,7 +91,7 @@ h2 {
 }
 
 /* Изображение */
-img {
+#about img {
     width: 100%;
     height: auto;
     max-height: 400px;
@@ -93,20 +100,20 @@ img {
     margin-bottom: 20px;
 }
 
-/* Список */
-ul {
+/* Список преимуществ */
+.advantages-list {
     list-style-type: none;
     padding-left: 0;
 }
 
-ul li {
+.advantages-list li {
     padding: 10px 0;
     padding-left: 30px;
     position: relative;
     font-weight: 400;
 }
 
-ul li::before {
+.advantages-list li::before {
     content: "✓";
     color: #ff6b35;
     font-weight: 700;
@@ -168,7 +175,7 @@ footer a:hover {
     #about img {
         width: 500px;
     }
-    nav {
+    nav ul {
         justify-content: space-between;
     }
 }
@@ -178,7 +185,7 @@ footer a:hover {
         text-align: center;
         width: 100%;
     }
-    nav {
+    nav ul {
         flex-direction: column;
         align-items: center;
     }
