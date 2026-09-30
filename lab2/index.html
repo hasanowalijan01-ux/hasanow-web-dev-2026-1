@@ -25,85 +25,19 @@
     </header>
 
     <main>
-        <section>
+        <section data-category="soup">
             <h2>Супы</h2>
-            <ul class="dishes-grid">
-                <li class="dish-card">
-                    <img src="images/soup1.jpg" alt="Томатный суп">
-                    <p class="price">350 ₽</p>
-                    <p class="name">Томатный суп</p>
-                    <p class="weight">300 г</p>
-                    <button>Добавить</button>
-                </li>
-                <li class="dish-card">
-                    <img src="images/soup2.jpg" alt="Грибной крем-суп">
-                    <p class="price">380 ₽</p>
-                    <p class="name">Грибной крем-суп</p>
-                    <p class="weight">300 г</p>
-                    <button>Добавить</button>
-                </li>
-                <li class="dish-card">
-                    <img src="images/soup3.jpg" alt="Суп с курицей">
-                    <p class="price">400 ₽</p>
-                    <p class="name">Суп с курицей</p>
-                    <p class="weight">350 г</p>
-                    <button>Добавить</button>
-                </li>
-            </ul>
+            <ul class="dishes-grid"></ul>
         </section>
 
-        <section>
+        <section data-category="main">
             <h2>Главные блюда</h2>
-            <ul class="dishes-grid">
-                <li class="dish-card">
-                    <img src="images/main1.jpg" alt="Картофельные котлеты">
-                    <p class="price">450 ₽</p>
-                    <p class="name">Картофельные котлеты с пюре</p>
-                    <p class="weight">400 г</p>
-                    <button>Добавить</button>
-                </li>
-                <li class="dish-card">
-                    <img src="images/main2.jpg" alt="Картофель с грибами">
-                    <p class="price">420 ₽</p>
-                    <p class="name">Картофель с грибами</p>
-                    <p class="weight">350 г</p>
-                    <button>Добавить</button>
-                </li>
-                <li class="dish-card">
-                    <img src="images/main3.jpg" alt="Лазанья">
-                    <p class="price">500 ₽</p>
-                    <p class="name">Лазанья с базиликом</p>
-                    <p class="weight">400 г</p>
-                    <button>Добавить</button>
-                </li>
-            </ul>
+            <ul class="dishes-grid"></ul>
         </section>
 
-        <section>
+        <section data-category="drink">
             <h2>Напитки</h2>
-            <ul class="dishes-grid">
-                <li class="dish-card">
-                    <img src="images/drink1.jpg" alt="Яблочный сок">
-                    <p class="price">150 ₽</p>
-                    <p class="name">Яблочный сок</p>
-                    <p class="weight">250 мл</p>
-                    <button>Добавить</button>
-                </li>
-                <li class="dish-card">
-                    <img src="images/drink2.jpg" alt="Морковный сок">
-                    <p class="price">170 ₽</p>
-                    <p class="name">Морковный сок</p>
-                    <p class="weight">250 мл</p>
-                    <button>Добавить</button>
-                </li>
-                <li class="dish-card">
-                    <img src="images/drink3.jpg" alt="Апельсиновый сок">
-                    <p class="price">180 ₽</p>
-                    <p class="name">Апельсиновый сок</p>
-                    <p class="weight">250 мл</p>
-                    <button>Добавить</button>
-                </li>
-            </ul>
+            <ul class="dishes-grid"></ul>
         </section>
     </main>
 
@@ -113,39 +47,11 @@
 
             <div class="form-columns">
 
-                <!-- Блок заказа -->
                 <div class="order-block">
                     <h3>Ваш заказ</h3>
-
-                    <label for="soup">Суп</label>
-                    <select id="soup" name="soup" required>
-                        <option value="">Выберите суп</option>
-                        <option value="tomato-soup">Томатный суп</option>
-                        <option value="mushroom-soup">Грибной крем-суп</option>
-                        <option value="chicken-soup">Суп с курицей</option>
-                    </select>
-
-                    <label for="main">Главное блюдо</label>
-                    <select id="main" name="main" required>
-                        <option value="">Выберите главное блюдо</option>
-                        <option value="potato-cutlets">Картофельные котлеты</option>
-                        <option value="potato-mushrooms">Картофель с грибами</option>
-                        <option value="lasagna">Лазанья</option>
-                    </select>
-
-                    <label for="drink">Напиток</label>
-                    <select id="drink" name="drink" required>
-                        <option value="">Выберите напиток</option>
-                        <option value="apple-juice">Яблочный сок</option>
-                        <option value="carrot-juice">Морковный сок</option>
-                        <option value="orange-juice">Апельсиновый сок</option>
-                    </select>
-
-                    <label for="comment">Комментарий</label>
-                    <textarea id="comment" name="comment" rows="4"></textarea>
+                    <p>Ничего не выбрано</p>
                 </div>
 
-                <!-- Блок данных клиента -->
                 <div class="client-block">
                     <h3>Данные клиента</h3>
 
@@ -197,5 +103,6 @@
         <p>Адрес: г. Москва, ул. Примерная, д. 10</p>
     </footer>
 
+    <script type="module" src="render.js"></script>
 </body>
 </html>
