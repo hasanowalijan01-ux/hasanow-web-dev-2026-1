@@ -106,3 +106,33 @@
         grid-template-columns: 1fr;
     }
 }
+/* Фильтры */
+.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filters button {
+    background-color: #f1eee9;
+    color: #333;
+    border: 2px solid transparent;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.filters button:hover {
+    background-color: #e0dcd5;
+}
+
+.filters button.active {
+    background-color: tomato;
+    color: white;
+    border-color: tomato;
+}

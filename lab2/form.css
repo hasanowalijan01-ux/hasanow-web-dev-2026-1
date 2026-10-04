@@ -178,3 +178,20 @@ button[type="submit"]:hover {
     color: #ff6b35;
     margin-top: 15px;
 }
+/* Выделенная карточка */
+.dish-card.selected {
+    border: 2px solid tomato;
+}
+
+/* Блок «Ваш заказ» */
+.order-block p {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.order-block .total {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ff6b35;
+    margin-top: 15px;
+}

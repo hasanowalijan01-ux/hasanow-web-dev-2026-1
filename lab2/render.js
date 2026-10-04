@@ -1,14 +1,17 @@
 import { dishes } from "./data.js";
 import { initCart } from "./cart.js";
+import { initFilters } from "./filter.js";
 
-const categoryOrder = ["soup", "main", "drink"];
+const categories = ["soup", "main", "salad", "drink", "dessert"];
 
 export function renderDishes() {
-    categoryOrder.forEach((category) => {
+    categories.forEach((category) => {
         const container = document.querySelector(
             `section[data-category="${category}"] .dishes-grid`
         );
         if (!container) return;
+
+        container.innerHTML = "";
 
         const filtered = dishes
             .filter((dish) => dish.category === category)
@@ -18,6 +21,7 @@ export function renderDishes() {
             const card = document.createElement("li");
             card.className = "dish-card";
             card.dataset.dish = dish.keyword;
+            card.dataset.kind = dish.kind;
 
             const img = document.createElement("img");
             img.src = dish.image;
@@ -45,4 +49,5 @@ export function renderDishes() {
 }
 
 renderDishes();
+initFilters();
 initCart();

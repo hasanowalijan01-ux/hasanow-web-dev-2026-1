@@ -26,23 +26,57 @@
 
     <main>
         <section data-category="soup">
-            <h2>Супы</h2>
+            <h2>Выберите суп</h2>
+            <div class="filters">
+                <button data-kind="fish">рыбный</button>
+                <button data-kind="meat">мясной</button>
+                <button data-kind="veg">вегетарианский</button>
+            </div>
             <ul class="dishes-grid"></ul>
         </section>
 
         <section data-category="main">
-            <h2>Главные блюда</h2>
+            <h2>Выберите главное блюдо</h2>
+            <div class="filters">
+                <button data-kind="fish">рыбное</button>
+                <button data-kind="meat">мясное</button>
+                <button data-kind="veg">вегетарианское</button>
+            </div>
+            <ul class="dishes-grid"></ul>
+        </section>
+
+        <section data-category="salad">
+            <h2>Выберите салат или стартер</h2>
+            <div class="filters">
+                <button data-kind="fish">рыбный</button>
+                <button data-kind="meat">мясной</button>
+                <button data-kind="veg">вегетарианский</button>
+            </div>
             <ul class="dishes-grid"></ul>
         </section>
 
         <section data-category="drink">
-            <h2>Напитки</h2>
+            <h2>Выберите напиток</h2>
+            <div class="filters">
+                <button data-kind="cold">холодный</button>
+                <button data-kind="hot">горячий</button>
+            </div>
+            <ul class="dishes-grid"></ul>
+        </section>
+
+        <section data-category="dessert">
+            <h2>Выберите десерт</h2>
+            <div class="filters">
+                <button data-kind="small">маленькая порция</button>
+                <button data-kind="medium">средняя порция</button>
+                <button data-kind="large">большая порция</button>
+            </div>
             <ul class="dishes-grid"></ul>
         </section>
     </main>
 
     <section class="order-section">
-        <h2>Оформить заказ</h2>
+        <h2>Сделать заказ</h2>
         <form action="https://httpbin.org/post" method="POST">
 
             <div class="form-columns">
@@ -53,7 +87,7 @@
                 </div>
 
                 <div class="client-block">
-                    <h3>Данные клиента</h3>
+                    <h3>Ваши данные</h3>
 
                     <label for="name">Имя</label>
                     <input type="text" id="name" name="name" required>

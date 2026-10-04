@@ -3,13 +3,17 @@ import { dishes } from "./data.js";
 export const cart = {
     soup: null,
     main: null,
+    salad: null,
     drink: null,
+    dessert: null,
 };
 
 const categoryLabels = {
     soup: "Суп",
     main: "Главное блюдо",
+    salad: "Салат/стартер",
     drink: "Напиток",
+    dessert: "Десерт",
 };
 
 function highlightCards() {
