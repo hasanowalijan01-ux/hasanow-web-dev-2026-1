@@ -136,3 +136,149 @@
     color: white;
     border-color: tomato;
 }
+/* Сетка вариантов ланчей */
+.lunch-variants {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.lunch-variants h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff6b35;
+    margin-bottom: 20px;
+}
+
+.variants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Карточка ланча */
+.variant-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    padding: 15px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.variant-card:hover {
+    border-color: tomato;
+}
+
+/* Блок одного блюда */
+.variant-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 40%;
+}
+
+.variant-dish img {
+    width: 100%;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Эффект при наведении на картинку (по заданию) */
+.variant-dish img:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.variant-dish p {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Подпись про десерты */
+.dessert-note {
+    width: 100%;
+    font-size: 12px; /* Меньше на 2pt (примерно 14px - 2 = 12px) */
+    color: #777;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ============ УВЕДОМЛЕНИЯ ============ */
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 3px solid tomato;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.notification p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.notification button {
+    background-color: tomato;
+    color: white;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.notification button:hover {
+    background-color: #fff;
+    color: tomato;
+    border: 2px solid tomato;
+}
+
+/* Задний фон для затемнения */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Адаптивность для вариантов ланчей */
+@media (max-width: 800px) {
+    .variants-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .variants-grid {
+        grid-template-columns: 1fr;
+    }
+}
