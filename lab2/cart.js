@@ -1,5 +1,3 @@
-import { dishes } from "./data.js";
-
 export const cart = {
     soup: null,
     main: null,
@@ -16,6 +14,7 @@ const categoryLabels = {
     dessert: "Десерт",
 };
 
+// ... функции highlightCards и updateCartUI остаются без изменений ...
 function highlightCards() {
     document.querySelectorAll(".dish-card").forEach((card) => {
         const keyword = card.dataset.dish;
@@ -69,12 +68,15 @@ function updateCartUI() {
     });
 }
 
-export function initCart() {
+// Передаем блюда при инициализации
+export function initCart(dishesList) {
     document.querySelectorAll(".dish-card button").forEach((button) => {
         button.addEventListener("click", () => {
             const card = button.closest(".dish-card");
             const keyword = card.dataset.dish;
-            const dish = dishes.find((d) => d.keyword === keyword);
+            
+            // Ищем блюдо в переданном массиве
+            const dish = dishesList.find((d) => d.keyword === keyword);
 
             if (!dish) return;
 
