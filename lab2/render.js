@@ -1,21 +1,19 @@
-import { initCart } from "./cart.js";
+import { initCart, loadCart } from "./cart.js";
 import { initFilters } from "./filter.js";
+import { updateStickyPanel } from "./sticky.js";
 
 const categories = ["soup", "main", "salad", "drink", "dessert"];
-export let allDishes = []; // Глобальная переменная для хранения блюд
+export let allDishes = [];
 
 export async function loadDishes() {
     try {
-        // Делаем запрос к API
-        const apiUrl = "dishes.json";
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-            throw new Error("Ошибка при загрузке данных");
-        }
+        // Используем локальный файл, так как API лежит
+        const response = await fetch("dishes.json");
+        if (!response.ok) throw new Error("Ошибка загрузки данных");
         
         allDishes = await response.json();
+        loadCart(); // Загружаем ранее выбранные блюда
 
-        // Отрисовываем блюда
         categories.forEach((category) => {
             const container = document.querySelector(
                 `section[data-category="${category}"] .dishes-grid`
@@ -24,7 +22,6 @@ export async function loadDishes() {
 
             container.innerHTML = "";
 
-            // Фильтруем по категории и сортируем по алфавиту
             const filtered = allDishes
                 .filter((dish) => dish.category === category)
                 .sort((a, b) => a.name.localeCompare(b.name, "ru"));
@@ -36,7 +33,7 @@ export async function loadDishes() {
                 card.dataset.kind = dish.kind;
 
                 const img = document.createElement("img");
-                img.src = dish.image; // Ссылка на картинку приходит с сервера
+                img.src = dish.image;
                 img.alt = dish.name;
 
                 const price = document.createElement("p");
@@ -59,14 +56,13 @@ export async function loadDishes() {
             });
         });
 
-        // Запускаем корзину и фильтры ТОЛЬКО после того, как карточки созданы
         initCart(allDishes);
         initFilters();
+        updateStickyPanel(); // Обновляем панель при загрузке
 
     } catch (error) {
         console.error("Ошибка:", error);
     }
 }
 
-// Запуск
 loadDishes();

@@ -1,4 +1,4 @@
-export const cart = {
+export let cart = {
     soup: null,
     main: null,
     salad: null,
@@ -6,83 +6,77 @@ export const cart = {
     dessert: null,
 };
 
-const categoryLabels = {
-    soup: "Суп",
-    main: "Главное блюдо",
-    salad: "Салат/стартер",
-    drink: "Напиток",
-    dessert: "Десерт",
-};
-
-// ... функции highlightCards и updateCartUI остаются без изменений ...
-function highlightCards() {
-    document.querySelectorAll(".dish-card").forEach((card) => {
-        const keyword = card.dataset.dish;
-        const isSelected = Object.values(cart).some(
-            (dish) => dish && dish.keyword === keyword
-        );
-        card.classList.toggle("selected", isSelected);
-    });
-}
-
-function updateCartUI() {
-    const orderBlock = document.querySelector(".order-block");
-    const form = document.querySelector(".order-section form");
-
-    const selected = [];
-    let total = 0;
-    let hasAny = false;
-
-    Object.keys(cart).forEach((category) => {
-        const dish = cart[category];
-        const label = categoryLabels[category];
-
-        if (dish) {
-            total += dish.price;
-            selected.push(`${label}: ${dish.name} — ${dish.price} ₽`);
-            hasAny = true;
-        } else {
-            selected.push(`${label}: Блюдо не выбрано`);
+// Загрузка корзины из localStorage
+export function loadCart() {
+    const saved = localStorage.getItem("foodCart");
+    if (saved) {
+        try {
+            cart = JSON.parse(saved);
+        } catch (e) {
+            console.error("Ошибка чтения корзины", e);
         }
-    });
-
-    if (!hasAny) {
-        orderBlock.innerHTML = `<h3>Ваш заказ</h3><p>Ничего не выбрано</p>`;
-    } else {
-        orderBlock.innerHTML = `
-            <h3>Ваш заказ</h3>
-            ${selected.map((line) => `<p>${line}</p>`).join("")}
-            <p class="total">Стоимость заказа: ${total} ₽</p>
-        `;
     }
-
-    document.querySelectorAll(".hidden-input").forEach((el) => el.remove());
-
-    Object.keys(cart).forEach((category) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = category;
-        input.value = cart[category] ? cart[category].keyword : "";
-        input.className = "hidden-input";
-        form.appendChild(input);
-    });
 }
 
-// Передаем блюда при инициализации
+// Сохранение корзины в localStorage
+export function saveCart() {
+    localStorage.setItem("foodCart", JSON.stringify(cart));
+}
+
+// Проверка на валидность комбо
+export function isValidCombo() {
+    const variants = [
+        { soup: true, main: true, salad: true, drink: true },
+        { soup: true, main: true, salad: false, drink: true },
+        { soup: true, main: false, salad: true, drink: true },
+        { soup: false, main: true, salad: true, drink: true },
+        { soup: false, main: true, salad: false, drink: true }
+    ];
+    
+    const selected = {
+        soup: !!cart.soup, main: !!cart.main, salad: !!cart.salad, 
+        drink: !!cart.drink, dessert: !!cart.dessert
+    };
+
+    return variants.some((variant) => 
+        variant.soup === selected.soup &&
+        variant.main === selected.main &&
+        variant.salad === selected.salad &&
+        variant.drink === selected.drink
+    );
+}
+
+// Получение итоговой суммы
+export function getTotalPrice() {
+    const dishes = Object.values(cart);
+    return dishes.reduce((sum, dish) => {
+        return sum + (dish ? dish.price : 0);
+    }, 0);
+}
+
+// Инициализация кнопок "Добавить" на странице меню
 export function initCart(dishesList) {
     document.querySelectorAll(".dish-card button").forEach((button) => {
         button.addEventListener("click", () => {
             const card = button.closest(".dish-card");
             const keyword = card.dataset.dish;
-            
-            // Ищем блюдо в переданном массиве
             const dish = dishesList.find((d) => d.keyword === keyword);
 
             if (!dish) return;
 
             cart[dish.category] = dish;
-            updateCartUI();
-            highlightCards();
+            saveCart(); // Сохраняем в память
+            
+            // Обновляем интерфейс (выделение карточки)
+            document.querySelectorAll(".dish-card").forEach((c) => {
+                const kw = c.dataset.dish;
+                const isSelected = Object.values(cart)
+                    .some((d) => d && d.keyword === kw);
+                c.classList.toggle("selected", isSelected);
+            });
+
+            // Обновляем нижнюю панель
+            import("./sticky.js").then(module => module.updateStickyPanel());
         });
     });
 }
