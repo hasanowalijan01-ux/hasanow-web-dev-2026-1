@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои заказы — ЛанчТайм</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="orders.css">
+</head>
+<body>
+    <header>
+        <h1>Мои заказы</h1>
+        <nav>
+            <ul>
+                <li><a href="../lab1/index.html">Главная</a></li>
+                <li><a href="index.html">Собрать ланч</a></li>
+                <li><a href="checkout.html">Оформить заказ</a></li>
+                <li><a href="orders.html" class="active">Заказы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="orders-section">
+            <div id="orders-list"></div>
+            <p id="no-orders" class="empty-message" style="display: none;">
+                У вас пока нет оформленных заказов. <a href="index.html">Собрать ланч</a>
+            </p>
+        </section>
+    </main>
+
+    <!-- Модальное окно -->
+    <div id="modal-overlay" class="modal-overlay" style="display: none;">
+        <div class="modal-content" id="modal-content">
+            <!-- Содержимое будет генерироваться через JS -->
+        </div>
+    </div>
+
+    <footer id="contacts">
+        <p>Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+    </footer>
+
+    <script type="module" src="orders.js"></script>
+</body>
+</html>

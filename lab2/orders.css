@@ -1,0 +1,120 @@
+.orders-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.order-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.order-info p {
+    margin-bottom: 8px;
+}
+
+.order-dishes {
+    color: #666;
+    font-size: 14px;
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.order-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: opacity 0.3s;
+}
+
+.order-actions button:hover {
+    opacity: 0.8;
+}
+
+.btn-view { background-color: #e0f7fa; color: #006064; }
+.btn-edit { background-color: #fff3e0; color: #e65100; }
+.btn-delete { background-color: #ffebee; color: #b71c1c; }
+
+/* --- МОДАЛЬНЫЕ ОКНА --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+}
+
+.close-btn:hover { color: #333; }
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #ff6b35;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-dishes {
+    margin: 15px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-primary { background: tomato; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.btn-secondary { background: #ccc; color: #333; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.btn-danger { background: #d32f2f; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }

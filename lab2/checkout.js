@@ -107,8 +107,9 @@ async function initCheckout() {
 }
 
 // 4. Отправка формы
-const form = document.getElementById("checkout-form");
-form.addEventListener("submit", async (e) => {
+const checkoutForm = document.getElementById("checkout-form");
+
+checkoutForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     if (!isValidCombo()) {
@@ -119,49 +120,61 @@ form.addEventListener("submit", async (e) => {
     const form = e.target;
     const formData = new FormData(form);
 
-    const orderData = {
+    // Собираем данные заказа
+    const deliveryType = formData.get("delivery_type");
+    const deliveryTime = deliveryType === "by_time" 
+        ? formData.get("delivery_time") 
+        : null;
+
+    const newOrder = {
+        id: Date.now(),
+        created_at: new Date().toISOString(),
         full_name: formData.get("full_name"),
         email: formData.get("email"),
-        subscribe: formData.get("subscribe") ? 1 : 0,
         phone: formData.get("phone"),
         delivery_address: formData.get("delivery_address"),
-        delivery_type: formData.get("delivery_type"),
+        delivery_type: deliveryType,
+        delivery_time: deliveryTime,
         comment: formData.get("comment") || "",
+        dishes: {
+            soup: cart.soup,
+            main: cart.main,
+            salad: cart.salad,
+            drink: cart.drink,
+            dessert: cart.dessert,
+        },
+        total_price: getTotalPrice()
     };
-
-    if (orderData.delivery_type === "by_time") {
-        orderData.delivery_time = formData.get("delivery_time");
-    }
-
-    if (cart.soup) orderData.soup_id = cart.soup.keyword;
-    if (cart.main) orderData.main_course_id = cart.main.keyword;
-    if (cart.salad) orderData.salad_id = cart.salad.keyword;
-    if (cart.drink) orderData.drink_id = cart.drink.keyword;
-    if (cart.dessert) orderData.dessert_id = cart.dessert.keyword;
 
     const submitBtn = document.getElementById("submit-btn");
     submitBtn.disabled = true;
     submitBtn.textContent = "Отправка...";
 
+    // Имитация отправки на сервер (сохранение в localStorage)
     try {
-        const response = await fetch("https://httpbin.org/post", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(orderData),
-        });
+        // Эмуляция задержки сети (чтобы было видно "Отправка...")
+        await new Promise((resolve) => setTimeout(resolve, 800)); 
 
-        if (!response.ok) {
-            throw new Error("Ошибка сервера");
+        // Получаем существующие заказы или создаем пустой массив
+        const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+        
+        // Проверка лимита (не более 10 заказов по условию API)
+        if (existingOrders.length >= 10) {
+            throw new Error("Достигнут лимит заказов (максимум 10).");
         }
 
-        alert("Заказ успешно оформлен!");
+        // Добавляем новый заказ и сохраняем
+        existingOrders.push(newOrder);
+        localStorage.setItem("orders", JSON.stringify(existingOrders));
+
+        // Очищаем корзину
         localStorage.removeItem("foodCart");
-        window.location.href = "index.html"; 
+        
+        alert("Заказ успешно оформлен!");
+        window.location.href = "orders.html";
 
     } catch (error) {
-        alert("Не удалось оформить заказ. Проверьте соединение.");
+        alert("Ошибка: " + error.message);
     } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = "Отправить заказ";
