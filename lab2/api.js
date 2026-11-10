@@ -1,5 +1,4 @@
-// Вставьте сюда ваш api_key из СДО Политеха
-const API_KEY = "ваш_уникальный_ключ_из_лмс";
+const API_KEY = "";
 
 // Базовый URL API (для Netlify)
 const BASE_URL = "https://edu.std-900.ist.mospolytech.ru/labs/api";
